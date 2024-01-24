@@ -13,7 +13,12 @@ const mainController = {
     res.status(404).render('error', {
       message: 'Page non trouvée',
     });
-  },
+  
+  showSeasonForm: (req, res)==>{
+    res.render(`getForm`)
+  }
+
+},
   
 };
 
