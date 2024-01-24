@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+<h1>Kaamelott Fanclub</h1>
+
+<section>
+  <h2>Les meilleures citations</h2>
+  <ul>
+    <% for (const quote of quotes) { %>
+      <li>
+        <%= quote.content %><br> 
+        &mdash; <%= quote.character %>, saison <%= quote.season %>
+      </li>
+    <% } %>
+  </ul>
+</section>
+
+<section>
+  <h2>Le coin des fans</h2>
+  <form>
+    <label>
+      Mais alors, le code, c'est quoi ?
+      <input type="text" name="answer">
+    </label>
+    <button type="submit">Valider</button>
+  </form>
+</section>
+
+<section>
+  <h2>Enigme</h2>
+</section>
+
+<%- include('partials/footer') %>

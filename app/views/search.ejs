@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<h1>Recherche</h1>
+
+<section>
+  <form action="/search" method="GET">
+    <% if (typeof alert !== 'undefined') { %>
+      <p role="alert"><%= alert %></p>
+    <% } %>
+    <label>
+      Mots clés
+      <input type="search" name="keywords">
+    </label>
+    <button type="submit">Chercher</button>
+  </form>
+
+  <% if(typeof quotes !== 'undefined') { %>
+    <h3>Résultat pour <%= search %></h3>
+    <% if (quotes.length > 0) { %>
+      <ul>
+        <% for (const quote of quotes) { %>
+          <li>
+            <%= quote.content %><br> 
+            &mdash; <%= quote.character %>, saison <%= quote.season %>
+          </li>
+        <% } %>
+      </ul>
+    <% } else { %>
+      <p>Aucun résultat</p>
+    <% } %>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

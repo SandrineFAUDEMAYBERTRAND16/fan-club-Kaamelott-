@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<h1>Livre d'or</h1>
+<section>
+  <h2>Vos messages</h2>
+  <ul>
+    <% for (const message of messages) { %>
+      <li><%= message %></li>
+    <% } %>
+  </ul>
+</section>
+<section>
+  <h2>Ajouter votre message</h2>
+  <form action="/book/add">
+    <% if (typeof alert !== 'undefined') { %>
+      <p role="alert"><%= alert %></p>
+    <% } %>
+    <label>
+      Votre message
+      <textarea name="message"></textarea>
+    </label>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+<p><a href="/">Retour à l'accueil</a></p>
+<%- include('partials/footer') %>
