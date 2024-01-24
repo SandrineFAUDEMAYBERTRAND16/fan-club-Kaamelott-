@@ -8,7 +8,34 @@ const bookController = {
 
   add: function(req, res) {
     const message = req.query.message?.trim();
-    if (!message) {
+    if(!message) {
+      throw new Error('Le message ne peut être vide')
+    }
+    else if (message.length < 3) {
+      throw new Error('Le message doit faire au moins 3 caractères')
+        
+    }
+    else if (message.length > 500) {
+      throw new Error('Le message ne peut faire plus de 500 caractères')
+
+    }
+    else if (message.length > 500) {
+
+    }
+    else {
+      messages.push(message)
+      res.redirect('/book');
+    }
+  } catch (error) {
+    res.render('book', { 
+      messages: messages, 
+      alert: error.message 
+    });
+  
+},
+//   add: function(req, res) {..........}
+    //pareil que
+    /* if (!message) {
       res.render('book', { 
         messages, 
         alert: 'Le message ne peut être vide', 
@@ -17,7 +44,7 @@ const bookController = {
     else if (message.length < 3) {
       res.render('book', { 
         messages, 
-        atert: 'Le message doit faire au moins 3 caractères', 
+        alert: 'Le message doit faire au moins 3 caractères', 
       });
     }
     else if (message.length > 500) {
@@ -32,6 +59,7 @@ const bookController = {
     }
   },
   
-};
+};*/
 
 export default bookController;
+ 

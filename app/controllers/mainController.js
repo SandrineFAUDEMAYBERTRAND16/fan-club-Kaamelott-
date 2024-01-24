@@ -11,26 +11,26 @@ const mainController = {
 
   notFound: function(req, res) {
     res.status(404).render('error', {
-      message: 'Page non trouvée',
-    });
+      message: 'Page non trouvée'
+    })
+  },
   
-  showSeasonForm: (req, res)==>{
-    res.render(`getForm`)
-  }
+  showSeasonForm: function(req, res){
+    res.render('getForm')
+  },
 
   search: function (req, res) {
     console.log(req.query);
     if (req.query.season) {
-      const filteredQuote = Quote.filter(element => element.includes(req.query.season));
-      res.render('form', { items: filtereredQuote });
+      const filteredQuote = Quote.filter(element => element.season==(req.query.season));
+      res.render('home', { quotes: filteredQuote });
     }
     else {
-      res.render('form', { items: quotes });
+      res.render('home', { quotes: quotes });
     }
   },
-};
+}
 
-},
   
 
 
