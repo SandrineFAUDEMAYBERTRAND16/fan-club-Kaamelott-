@@ -2,7 +2,6 @@ import express from 'express';
 import mainController from './controllers/mainController.js';
 import bookController from './controllers/bookController.js';
 import searchController from './controllers/searchController.js';
-import quotes from './data/quotes.js';
 import quizController from './controllers/quizController.js';
 
 const router = express.Router();
