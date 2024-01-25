@@ -1,4 +1,7 @@
 import messages from '../data/messages.js';
+import message1 from '../models/Message.js'
+
+
 
 const bookController = {
 
@@ -8,31 +11,41 @@ const bookController = {
 
   add: function(req, res) {
     const message = req.query.message?.trim();
-    if(!message) {
-      throw new Error('Le message ne peut être vide')
-    }
-    else if (message.length < 3) {
-      throw new Error('Le message doit faire au moins 3 caractères')
+
+    try {
+      if(!message) {
+        throw new Error('Le message ne peut être vide')
+      }
+      else if (message.length < 3) {
+        throw new Error('Le message doit faire au moins 3 caractères')
         
+      }
+      else if (message.length > 500) {
+        throw new Error('Le message ne peut faire plus de 500 caractères')
+        
+      }
+      else {
+        messages.push(message)
+        res.redirect('/book');
+      }
+    } catch (error) {
+      res.render('book', { 
+        messages, 
+        alert: error.message 
+      });
     }
-    else if (message.length > 500) {
-      throw new Error('Le message ne peut faire plus de 500 caractères')
-
+    
+  },
+  create: function(req, res) {
+    try {
+      const Message = newMessage(req.body.message1,);
+      res.render('ok', {message1: user.message1 });
+    } catch (error) {
+      res.render('error', { error });
     }
-    else if (message.length > 500) {
-
-    }
-    else {
-      messages.push(message)
-      res.redirect('/book');
-    }
-  } catch (error) {
-    res.render('book', { 
-      messages: messages, 
-      alert: error.message 
-    });
-  
-},
+  },
+};
+export default bookController;
 //   add: function(req, res) {..........}
     //pareil que
     /* if (!message) {
@@ -60,6 +73,3 @@ const bookController = {
   },
   
 };*/
-
-export default bookController;
- 
