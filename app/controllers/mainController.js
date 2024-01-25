@@ -19,19 +19,16 @@ const mainController = {
     res.render('getForm')
   },
 
-  search: function (req, res) {
-    console.log(req.query);
-    if (req.query.season) {
-      const filteredQuote = Quote.filter(element => element.season==(req.query.season));
-      res.render('home', { quotes: filteredQuote });
-    }
-    else {
-      res.render('home', { quotes: quotes });
+  handleSeasonChoice: (req, res, next) => {
+    const choixSaison = Number(req.query.choixSaison);
+    const quotesList = quotes.filter(quote => quote.season === choixSaison);
+    if (quotesList.length >= 1) {
+      res.render('home', { quotes: quotesList })
+    } else {
+      next();
     }
   },
-}
 
   
-
-
+};
 export default mainController;

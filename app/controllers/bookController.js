@@ -30,7 +30,7 @@ const bookController = {
 
 export default bookController;
 
-export default bookController;
+
 //   add: function(req, res) {..........}
     //pareil que
     /* if (!message) {
