@@ -1,27 +1,28 @@
-class Message{
-    #message1;
-   
+class Message {
+    #value;
 
-constructor(message1){
- this.message1 = message1
-}
-
-set message1(value){
-    if (typeof value !== 'string' || value.length === 0){
-        throw new Error('message invalide');
+    constructor(value) {
+        this.value = value;
     }
-    this.#message1 = value;
-}
-get message1() {
-    return this.#message1.toLowerCase();
-  }
 
-  get profil() {
-    return `${this.message1}`;
-  }
-
+    get value() {
+        return this.#value;
+    }
+    set value(value){ //set pour setter
+        if(!message) {
+            throw new Error('Le message ne peut être vide')
+          }
+          else if (value.length < 3) {
+            throw new Error('Le message doit faire au moins 3 caractères')
+          }
+          else if (value.length > 500) {
+            throw new Error('Le message ne peut faire plus de 500 caractères')
+          }
+        this.#value = value;
+    }
 }
-export default Message
+
+export default Message;
 
 
 
